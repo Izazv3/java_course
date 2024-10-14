@@ -77,6 +77,18 @@ class Hello {
 
     B bclass = new B(5);
 
+    Computer comp = new Laptop(); // polymorphism --> many behaviour
+    comp.show();
+
+    // final ==> var, method and classs
+    // var -- declare const var
+    // class -- making refuse inheritance that does not allow extends another class
+    // method -- does not allow method overriding in inheritance
+
+    Car objCar = new Bmw();
+    objCar.drive();
+    objCar.fly();
+
   }
 }
 
@@ -165,4 +177,40 @@ class B extends A { // inherited A class multi level inheretance
     this();
     System.out.println("in B int");
   }
+}
+
+// polymorphism --> many behaviour
+
+class Computer {
+  public void show() {
+    System.out.println("this is a computer");
+  }
+}
+
+class Laptop extends Computer {
+  public void show() {
+    System.out.println("this is a laptop");
+  }
+}
+
+// abstract class cant create obj
+
+abstract class Car {
+  public abstract void drive();
+
+  public abstract void fly();
+}
+
+class Bmw extends Car {
+
+  @Override
+  public void drive() {
+    System.out.println("bmw driving....");
+  }
+
+  @Override
+  public void fly() {
+    System.out.println("bmw flying....");
+  }
+
 }
