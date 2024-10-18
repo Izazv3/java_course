@@ -89,6 +89,13 @@ class Hello {
     objCar.drive();
     objCar.fly();
 
+    java javaObj;
+
+    javaObj = new javaImpl();
+
+    javaObj.show();
+    javaObj.config();
+
   }
 }
 
@@ -211,6 +218,30 @@ class Bmw extends Car {
   @Override
   public void fly() {
     System.out.println("bmw flying....");
+  }
+
+}
+
+// interface in java
+
+interface java {
+  int age = 25; // final and static
+  String area = "Bangalore";
+
+  void show();
+
+  void config();
+}
+
+class javaImpl implements java {
+
+  public void show() {
+    System.out.println("in show");
+  }
+
+  public void config() {
+    System.out.println("in config");
+
   }
 
 }
