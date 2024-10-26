@@ -1,5 +1,15 @@
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.io.BufferedReader;
+import java.io.IOException;
+
 class Hello {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     System.out.println("hello world");
 
     int num = 5;
@@ -96,7 +106,57 @@ class Hello {
     javaObj.show();
     javaObj.config();
 
+    // class -> class = extends
+    // interface -> class = implements
+    // interface -> interface = extends
+
+    try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+      int userInput = Integer.parseInt(br.readLine());
+      System.out.println(userInput);
+    }
+
+    // work on isolate of multiple thread --> extends thread classs and
+    // obj1.start(), obj1.sleep(), obj1,join()
+
+    // lamda expression = ()->{} only for functional interfacec
+
+    // thread calling same method -> synchronized keyword allows once at a time
+
+    Map<String, Integer> myMap = new HashMap<>();
+
+    myMap.put("izaz", 100);
+    myMap.put("harish", 80);
+    myMap.put("gokul", 71);
+    myMap.put("peter", 76);
+    myMap.put("hari", 91);
+
+    System.out.println(myMap);
+
+    for (String n : myMap.keySet()) {
+      System.out.println(n + " - " + myMap.get(n));
+    }
+
+    System.out.println("**************");
+
+    // comparator and conparable
+
+    Comparator<Person> coms = (j, k) -> j.age > k.age ? 1 : -1; // lamda expression
+
+    List<Person> persons = new ArrayList<Person>();
+    persons.add(new Person("izaz", 25));
+    persons.add(new Person("navin", 30));
+    persons.add(new Person("harish", 12));
+    persons.add(new Person("reddy", 45));
+    persons.add(new Person("kiran", 19));
+
+    persons.sort(coms);
+
+    for (Person p : persons) {
+      System.out.println(p.name + " - " + p.age);
+    }
+
   }
+
 }
 
 class Student {
@@ -198,6 +258,7 @@ class Laptop extends Computer {
   public void show() {
     System.out.println("this is a laptop");
   }
+
 }
 
 // abstract class cant create obj
@@ -224,6 +285,8 @@ class Bmw extends Car {
 
 // interface in java
 
+// @FunctionalInterface --> allows only one methods
+// interfacetypes --> normal, functional, marker
 interface java {
   int age = 25; // final and static
   String area = "Bangalore";
@@ -242,6 +305,19 @@ class javaImpl implements java {
   public void config() {
     System.out.println("in config");
 
+  }
+
+}
+
+// comparator vs comparable
+
+class Person {
+  String name;
+  int age;
+
+  public Person(String name, int age) {
+    this.name = name;
+    this.age = age;
   }
 
 }
